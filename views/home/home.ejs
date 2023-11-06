@@ -66,12 +66,14 @@
       <table class="table">
         <thead>
           <tr>
+            <th scope="col">Product ID</th>
             <th scope="col">Product Code</th>
             <th scope="col">Product Name</th>
             <th scope="col">Product Date</th>
             <th scope="col">Product Origin Price</th>
             <th scope="col">Quantity</th>
             <th scope="col">Product Store Code</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -102,19 +104,25 @@
       };
 
       const populate = (products = []) => {
-        tbody.innerHTML = ""
-        products.forEach(p => tbody.insertAdjacentHTML("beforeend", 
-        `
+        tbody.innerHTML = "";
+        products.forEach((p) =>
+          tbody.insertAdjacentHTML(
+            "beforeend",
+            `
         <tr>
+            <td scope="col">${p._id}</td>
             <td scope="col">${p.ProductCode}</td>
             <td scope="col">${p.ProductName}</td>
             <td scope="col">${p.ProductDate}</td>
             <td scope="col">${p.ProductOriginPrice}</td>
             <td scope="col">${p.Quantity}</td>
             <td scope="col">${p.ProductStoreCode}</td>
+           <td scope="col"><a href="delete/${p._id}">Delete</a></td>
           </tr>
-        `));
-      }
+        `
+          )
+        );
+      };
 
       // On load
       init();
